@@ -11,6 +11,15 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks))
   }, [tasks])
 
+  useEffect(() => {
+    //CHAMAR A API
+
+    //PEGAR OS DADOS QUE ELA RETORNA
+
+    //ARMAZENAR/PERSISTIR ESSES DADOS NO STATE
+
+  }, [])
+
 
   function onTaskClick(taskId) {
     const newTasks = tasks.map((task) => {
