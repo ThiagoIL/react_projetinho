@@ -1,6 +1,7 @@
 import React from "react";
-import { ChevronRightIcon, DeleteIcon, Trash2Icon, TrashIcon } from "lucide-react";
+import { CheckCheckIcon, Check, ChevronRightIcon, DeleteIcon, Trash2Icon, TrashIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 const Tasks = ({ tasks, onTaskClick, onDeleteTaskClick }) => {
   const navigate = useNavigate()
@@ -8,7 +9,7 @@ const Tasks = ({ tasks, onTaskClick, onDeleteTaskClick }) => {
     const query = new URLSearchParams()
     query.set("title", task.title)
     query.set("description", task.description)
-    
+
     navigate(`/task?${query.toString()}`)
 
   }
@@ -21,24 +22,22 @@ const Tasks = ({ tasks, onTaskClick, onDeleteTaskClick }) => {
         >
           <button
             onClick={() => onTaskClick(task.id)}
-            className={`bg-slate-400 text-left text-white p-2 rounded-md w-full ${task.isCompleted && 'line-through'}`}
+            className={`bg-slate-400 text-left text-white p-2 rounded-md w-full flex items-center gap-2 ${task.isCompleted && 'line-through'}`}
           >
+            {task.isCompleted && <Check/>}
             {task.title}
 
           </button>
-          <button
-            className="bg-slate-400 text-white p-2 rounded-md "
+          <Button
             onClick={() => onSeeDetailsClick(task)}
-
           >
             <ChevronRightIcon />
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => onDeleteTaskClick(task.id)}
-            className="bg-slate-400 text-white p-2 rounded-md "
           >
             <TrashIcon />
-          </button>
+          </Button>
         </li>
       ))}
     </ul>

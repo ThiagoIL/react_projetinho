@@ -1,8 +1,11 @@
-import React from 'react'
-
-const Button = () => {
+const Button = (props) => {
   return (
-    <div>Button</div>
+    <button
+      {...props}
+      className="bg-slate-400 text-white p-2 rounded-md "
+    >
+      {props.children}
+    </button>
   )
 }
 
